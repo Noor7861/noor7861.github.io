@@ -3,76 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APK Downloads</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        h1 { color: #333; }
-        ul { list-style: none; padding: 0; }
-        li { margin: 10px 0; }
-        a { text-decoration: none; color: blue; }
-        .footer { margin-top: 20px; font-size: 14px; }
-        .visit-btn { 
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 15px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .bio { font-size: 16px; margin-bottom: 20px; color: #666; }
-        .name { font-size: 28px; font-weight: bold; margin-bottom: 10px; }
-    </style>
+    <title>Noor - APK Downloads</title>
+    <link rel="stylesheet" href="styles.css"> <!-- External CSS -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- FontAwesome Icons -->
 </head>
 <body>
+    <div class="container">
+        <h1>Noor</h1>
+        <p class="tagline">Visit karne ke liye shukriya, mai hamesha aapke sath hu.</p>
+        
+        <h2>📥 Download Latest APKs</h2>
+        <div id="apk-container">
+            <a href="F-Droid.apk" class="download-link"><i class="fas fa-download"></i> F-Droid.apk</a>
+        </div>
 
-    <!-- Tumhara Naam -->
-    <div class="name">Noor</div>
-
-    <!-- Tumhara Bio -->
-    <div class="bio">Visit karne ke liye shukriya, mai hamesha apke sath hu.</div>
-
-    <h1>Download Latest APKs</h1>
-    <ul id="apk-list">Loading...</ul>
-
-    <!-- Footer Section -->
-    <div class="footer">
-        <p>Made by <strong>Noor7861</strong></p>
-        <a class="visit-btn" href="https://github.com/Noor7861" target="_blank">Visit My GitHub</a>
+        <p class="made-by">Made by <strong>Noor7861</strong></p>
+        
+        <a href="https://github.com/Noor7861" class="btn"><i class="fab fa-github"></i> Visit My GitHub</a>
     </div>
 
-    <script>
-        const repoOwner = "Noor7861";
-        const repoName = "noor7861.github.io";
+    <footer>
+        <p>© 2025 Noor | <a href="https://github.com/Noor7861" target="_blank"><i class="fab fa-github"></i> GitHub</a></p>
+    </footer>
 
-        async function fetchReleases() {
-            const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/releases`);
-            const releases = await response.json();
-            const apkList = document.getElementById("apk-list");
-            apkList.innerHTML = "";
-
-            if (releases.length === 0) {
-                apkList.innerHTML = "<li>No APKs available</li>";
-                return;
-            }
-
-            releases.forEach(release => {
-                release.assets.forEach(asset => {
-                    if (asset.name.endsWith(".apk")) {
-                        const listItem = document.createElement("li");
-                        const link = document.createElement("a");
-                        link.href = asset.browser_download_url;
-                        link.textContent = asset.name;
-                        link.download = asset.name;
-                        listItem.appendChild(link);
-                        apkList.appendChild(listItem);
-                    }
-                });
-            });
-        }
-
-        fetchReleases();
-    </script>
-
+    <script src="script.js"></script> <!-- External JavaScript -->
 </body>
 </html>
